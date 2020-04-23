@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 14:02:43 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/23 03:18:23 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/23 05:49:04 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,14 @@ bool						dyn_array_mult_enlarge(
 								t_dyn_array		*dyn_array, int factor);
 bool						dyn_array_inc_enlarge(
 								t_dyn_array		*dyn_array, int increment);
+void						dyn_array_iterator_next_as_iterator(
+								void			*iterator);
+void						dyn_array_iterator_prev_as_iterator(
+								void			*iterator);
+void						*dyn_array_iterator_deref_as_iterator(
+								void			*iterator);
+bool						dyn_array_iterator_reached_end_as_iterator(
+								void			*iterator);
+bool						dyn_array_iterator_reached_begin_as_iterator(
+								void			*iterator);
 #endif

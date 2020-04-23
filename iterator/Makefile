@@ -8,7 +8,7 @@ STDLIBS=#list of list which must be include to compile
 foo_DIR=..#mandatory, directory containing both library and its Makefile.
 foo_INC=#optionnal, default to lib_DIR : dirname containing lib's headers files.
 #-- srcs definition :
-SRCS=iterator.c iterator_noop_release.c 
+SRCS=iterator_apply.c iterator.c iterator_noop_release.c 
 SRCS_DIRS=
 SRCS_INCS=.#
 #

@@ -6,12 +6,13 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 12:23:58 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/23 00:22:01 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/23 04:30:50 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dyn_array.h"
 #include <stdlib.h>
+
 bool			dyn_array_init(
 				t_dyn_array *dyn_array
 				, size_t size)
