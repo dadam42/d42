@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 16:16:45 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/21 19:49:40 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/22 22:59:33 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@
 # include <stdbool.h>
 
 bool			array_collection_init(
-					t_collection	*collection);
-void			array_collection_init_by_dyn_array(
-					t_collection	*collection
-					, t_dyn_array	*dyn_array);
+					t_array_collection	*array_collection
+					, t_stack *stack, void *rtag);
 void			array_collection_remove(
 							t_array_collection	*array_collection
 							, void				*element);
 bool			array_collection_add(
 							t_array_collection	*array_collection
 							, void				*element);
+bool			array_collection_contents(
+							t_array_collection	*array_collection
+							, void				*element);
+void			array_collection_release(
+							t_array_collection *array_collection);
 #endif

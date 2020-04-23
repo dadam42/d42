@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dyn_array_init.c                                   :+:      :+:    :+:   */
+/*   iterator.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/20 12:23:58 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/23 00:22:01 by damouyal         ###   ########.fr       */
+/*   Created: 2020/04/22 23:23:18 by damouyal          #+#    #+#             */
+/*   Updated: 2020/04/22 23:26:53 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dyn_array.h"
-#include <stdlib.h>
-bool			dyn_array_init(
-				t_dyn_array *dyn_array
-				, size_t size)
+#include "iterator.h"
+
+void	iterator_init(t_iterator *iterator, void *realisation)
 {
-	if (size < MIN_INIT_SIZE)
-		size = MIN_INIT_SIZE;
-	dyn_array->element = malloc(size * sizeof(void*));
-	if (!dyn_array->element)
-		return (false);
-	dyn_array->used = 0;
-	dyn_array->size = size;
-	return (true);
+	iterator->realisation = realisation;
+}
+
+void	iterator_next(t_iterator *iterator)
+{
+	iterator->next(iterator->realisation);
+}
+
+void	*iterator_deref(t_iterator *iterator)
+{
+	return (iterator->deref(iterator->realisation));
+}
+
+void	iterator_release(t_iterator *iterator)
+{
+	iterator->release(iterator->realisation);
 }

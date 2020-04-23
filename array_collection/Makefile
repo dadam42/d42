@@ -1,14 +1,16 @@
 #-- TARGET definition :
-TARGET_TYPE=#one of : exe, lib, default to exe
+TARGET_TYPE=lib#one of : exe, lib, default to exe
 TARGET=libarray_collection.a
 #-- libs definition :
-LIBS=#list of libs (prefixed with lib : e.g libfoo) which must be recompiled by this Makefile
+LIBS=libdyn_array libstack libarray_stack#list of libs (prefixed with lib : e.g libfoo) which must be recompiled by this Makefile
 STDLIBS=#list of list which must be include to compile
 #-- definitions for each libfoo from $(LIBS):
-foo_DIR=..#mandatory, directory containing both library and its Makefile.
+dyn_array_DIR=../data_structures#mandatory, directory containing both library and its Makefile.
+stack_DIR=../stack
+array_stack_DIR=../array_stack
 foo_INC=#optionnal, default to lib_DIR : dirname containing lib's headers files.
 #-- srcs definition :
-SRCS=array_collection_add.c array_collection_init.c array_collection_remove.c 
+SRCS=array_collection_add.c array_collection_contents.c array_collection_init.c array_collection_release.c array_collection_remove.c 
 SRCS_DIRS=
 SRCS_INCS=.#
 #

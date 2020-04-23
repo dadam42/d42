@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 14:02:43 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/22 18:18:32 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/23 00:19:48 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ struct						s_dyn_array
 {
 	void				**element;
 	size_t				size;
+	size_t				used;
 };
+
+typedef struct				s_dyn_array_iterator
+{
+	t_dyn_array				*dyn_array;
+	t_dyn_array_index		cur;
+}							t_dyn_array_iterator;
 
 bool						dyn_array_mult_enlarge(
 								t_dyn_array		*dyn_array, int factor);

@@ -1,27 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dyn_array_init.c                                   :+:      :+:    :+:   */
+/*   dyn_array_iterator_init_iterator.c                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/20 12:23:58 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/23 00:22:01 by damouyal         ###   ########.fr       */
+/*   Created: 2020/04/23 00:35:35 by damouyal          #+#    #+#             */
+/*   Updated: 2020/04/23 00:40:03 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dyn_array.h"
-#include <stdlib.h>
-bool			dyn_array_init(
-				t_dyn_array *dyn_array
-				, size_t size)
-{
-	if (size < MIN_INIT_SIZE)
-		size = MIN_INIT_SIZE;
-	dyn_array->element = malloc(size * sizeof(void*));
-	if (!dyn_array->element)
-		return (false);
-	dyn_array->used = 0;
-	dyn_array->size = size;
-	return (true);
-}
+
