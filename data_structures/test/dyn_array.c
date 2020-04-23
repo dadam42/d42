@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterator.h                                         :+:      :+:    :+:   */
+/*   dyn_array.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/20 15:39:17 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/23 03:48:06 by damouyal         ###   ########.fr       */
+/*   Created: 2020/04/23 03:09:41 by damouyal          #+#    #+#             */
+/*   Updated: 2020/04/23 03:32:01 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITERATOR_H
-# define ITERATOR_H
+#include "dyn_array.h"
+#include <stdio.h>
 
-typedef struct s_iterator	t_iterator;
-
-struct						s_iterator
+int main()
 {
-	void	*realisation;
-	void	(*next)(void*);
-	void	*(*deref)(void*);
-	void	(*release)(void*);
-};
-
-void	iterator_init(t_iterator *iterator, void *realisation);
-void	iterator_next(t_iterator *iterator);
-void	*iterator_deref(t_iterator *iterator);
-void	iterator_release(t_iterator *iterator);
-#endif
+	t_dyn_array dyn_array;
+	dyn_array_init(&dyn_array, 3);
+	char *_str = "toto";
+	dyn_array_set(&dyn_array, 0, _str);
+	char *str = dyn_array_get_elt(&dyn_array, 0);
+	printf("%s\n", str);
+	dyn_array_release(&dyn_array);
+	return (0);
+}

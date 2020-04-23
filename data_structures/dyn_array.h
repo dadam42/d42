@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 11:45:56 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/22 23:59:43 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/23 03:21:47 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "dyn_array_int.h"
 # include "iterator.h"
 
-typedef	size_t	t_dyn_array_index;
-typedef void**	t_dyn_array_addr;
 
 bool			dyn_array_init(
 					t_dyn_array				*dyn_array
@@ -50,5 +48,5 @@ void			dyn_array_iterator_prev(
 void			*dyn_array_iterator_deref(
 					t_dyn_array_iterator	*iterator);
 bool			dyn_array_iterator_end(
-					t_dyn_iterator			*iterator);
+					t_dyn_array_iterator			*iterator);
 #endif

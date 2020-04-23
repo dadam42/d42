@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 14:02:43 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/23 00:19:48 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/23 03:18:23 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <stdbool.h>
 # include <stddef.h>
 
+typedef	size_t				t_dyn_array_index;
+typedef void**				t_dyn_array_addr;
 typedef struct s_dyn_array	t_dyn_array;
 
 struct						s_dyn_array
