@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 16:59:36 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/22 00:22:47 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:15:50 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ bool			array_stack_enstack(t_array_stack *array_stack
 									, void *enstacked);
 void			array_stack_release(t_array_stack *array_stack);
 void			array_stack_init_stack(t_array_stack *array_stack
+										, t_stack *stack);
+void			array_stack_init_auto_stack(t_array_stack *array_stack
 										, t_stack *stack);
 #endif

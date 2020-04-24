@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 17:14:16 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/22 19:50:38 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:04:31 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	stack_init(t_stack *stack, void *realisation)
 {
 	stack->realisation = realisation;
+	stack->_release = stack->release;
 }
 
 void	*stack_peek(t_stack *stack)
@@ -29,7 +30,7 @@ void	stack_pop(t_stack *stack)
 
 void	stack_release(t_stack *stack)
 {
-	stack->release(stack->realisation);
+	stack->_release(stack->realisation);
 }
 
 t_stack_size	stack_size(t_stack *stack)

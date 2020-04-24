@@ -1,52 +1,92 @@
+uniq=$(if $(1),$(firstword $(1)) $(call uniq,$(filter-out $(firstword $(1)),$(1))))
+CFLAGS= -Wall -Wextra -Werror $(DEBUG)
 CC=gcc
-RTARGET_TYPE=$(if $(TARGET_TYPE),$(TARGET_TYPE),exe)
-LIBS_FPATHS=$(foreach lib,$(LIBS:lib%=%),$($(lib)_DIR)/lib$(lib).a)
-LIBS_DIRS=$(foreach lib,$(LIBS:lib%=%),$($(lib)_DIR))
-LDLIBS=$(LIBS_DIRS:%=-L%) $(LIBS:lib%=-l%) $(STDLIBS:lib%=-l%)
-LIBS_INCS=$(foreach lib,$(LIBS:lib%=%),$(if $($(lib)_INC),$($(lib)_INC),$($(lib)_DIR)))
-IFLAGS=$(SRCS_INCS:%=-I%) $(LIBS_INCS:%=-I%)
-CFLAGS=-Wall -Wextra -Werror $(IFLAGS) $(DEBUG)
-export DEBUG
-empty=
-space=$(empty) $(empty)
-VPATH=$(subst $(space),:,$(SRCS_DIRS))
-vpath lib%.a $(subst $(space),:,$(LIBS_DIRS))
-define libfclean_rule
-.PHONY:$(1).fclean
-$(1).fclean:
-	$$(MAKE) -C $$($(1:lib%=%)_DIR) fclean 
+define clean_libname
+$(1):=$$(filter-out %.a, $$($(1))) $$(foreach elt, $$(filter %.a, $$($(1))), $$(elt:%.a=%))
 
 endef
 
-.PHONY:all
-all:$(TARGET)
+define define_target_libs
+$(1)_LIBS:=$($(1)_USELIBS) $($(1)_STDLIBS)
 
-bonus:$(TARGET)
+endef
 
-ifeq ($(RTARGET_TYPE),exe)
-$(TARGET):$(LIBS:%=%.a) $(SRCS:%.c=%.o)
-	gcc $(CFLAGS) $(SRCS:%.c=%.o)  -o $@ $(LDLIBS)
-else
-$(TARGET): $(LIBS:%=%.a) $(SRCS:%.c=%.o)
-	$(foreach liba, $(notdir $(filter %.a, $?)), ar -x $($(liba:lib%.a=%)_DIR)/$(liba);)
-	ar -rc $@ *.o
-	ranlib $@
-endif
+define define_lib_incs
+$(1)_INCS?=$($(1)_DIR) 
 
-ifneq ($(LIBS),)
-lib%.a:
-	$(MAKE) -C $($*_DIR)
-endif
+endef
 
-$(foreach lib,$(LIBS),$(eval $(call libfclean_rule, $(lib))))
+define define_lib_mdir
+$(1)_MDIR?=$($(1)_DIR)
+
+endef
+
+$(eval $(call clean_libname,LIBTARGETS))
+TARGETS:=$(EXETARGETS) $(LIBTARGETS)
+$(foreach target, $(TARGETS), $(eval $(call clean_libname,$(target)_USELIBS)) $(eval $(call clean_libname,$(target)_STDLIBS)))
+USELIBS=$(foreach target,$(TARGETS),$($(target)_USELIBS))
+USELIBS:=$(call uniq,$(USELIBS))
+USEDIRS=$(foreach target,$(TARGETS), $($(target)_DIRS))
+USEDIRS:=$(call uniq,$(USEDIRS))
+vpath %.c $(USEDIRS)
+USELIBSDIRS=$(foreach lib,$(USELIBS),$($(lib)_DIR))
+USELIBSDIRS:=$(call uniq,$(USELIBSDIRS))
+vpath %.a $(USELIBSDIRS)
+$(foreach target, $(TARGETS),$(eval $(call define_target_libs,$(target))))
+STDLIBS=$(foreach target,$(TARGETS),$($(target)_STDLIBS))
+STDLIBS:=$(call uniq,$(STDLIBS))
+LIBS:=$(STDLIBS) $(USELIBS)
+$(foreach lib,$(LIBS),$(eval $(call define_lib_incs,$(lib))))
+$(foreach lib, $(LIBS),$(eval $(call define_lib_mdir,$(lib))))
+
+define target_include
+$(foreach dir,$($(1)_INCS),$(dir:%=-I%)) $(foreach lib,$($(1)_LIBS),$(foreach dir,$($(lib)_INCS),$(dir:%=-I%)))
+endef
+
+define target_ld
+$(foreach lib, $($(1)_USELIBS), $($(lib)_DIR:%=-L%) $(lib:lib%=-l%)) $($(1)_STDLIB:lib%=-l%)
+endef
+
+define target_prerequisite
+$$($(1)_SRCS:%.c=%.o) $$($(1)_USELIBS:%=%.a)
+endef
+
+define usedlib_rule
+$(1).a:
+	$$(MAKE) -C $$($(1)_MDIR) $(1).a
+endef
+
+define libtarget_rule
+$(1).a:CFLAGS:=$(call target_include,$(1)) $$(CFLAGS)
+$(1).a: $(call target_prerequisite,$(1))
+	ar -rc $$@ $$(filter-out %.a, $$?)
+	ranlib $$@
+endef
+
+define exetarget_rule
+$(1):CFLAGS:=$(call target_include,$(1)) $$(CFLAGS)
+$(1): $(call target_prerequisite,$(1))
+	$$(CC) $$(CFLAGS) $$(filter-out %.a, $$^) -o $$@ $(call target_ld,$(1))
+endef
+
+TARGETS:=$(EXETARGETS) $(LIBTARGETS:%=%.a)
+.PHONY: all
+all: $(TARGETS)
 
 .PHONY:clean
 clean:
-	rm -f $(wildcard *.o)
+	rm -f *.o
 
-.PHONY: fclean
-fclean:$(LIBS:%=%.fclean) clean
-	rm -f $(TARGET)
+.PHONY:fclean
+fclean: clean
+	rm -f $(TARGETS)
 
 .PHONY:re
-re:fclean $(TARGET)
+re: fclean all
+	
+
+$(foreach target,$(EXETARGETS), $(eval $(call exetarget_rule,$(target))))
+
+$(foreach target,$(LIBTARGETS), $(eval $(call libtarget_rule,$(target))))
+
+$(foreach lib, $(USELIBS), $(eval $(call usedlib_rule,$(lib))))

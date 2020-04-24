@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 11:41:55 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/22 19:24:01 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/24 05:14:20 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ struct							s_collection
 };
 
 void	collection_init(t_collection *collection, void *realisation);
-bool	collection_add(t_collection *collection);
+bool	collection_add(t_collection *collection, void *element);
 void	collection_remove(t_collection *collection, void* element);
 bool	collection_contents(t_collection *collection, void *element);
 void	collection_release(t_collection *collection);

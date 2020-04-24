@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 15:58:35 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/22 23:08:22 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/23 19:29:23 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ void	array_collection_remove(
 		curelt = dyn_array_get_elt(&array_collection->slot, curdx);
 		if (curelt == element)
 		{
-			stack_enstack(array_collection->removed
+			stack_enstack(array_collection->initer.removed
 						, dyn_array_get_addr(&array_collection->slot, curdx));
-			dyn_array_set(&array_collection->slot, curdx, array_collection->rtag);
+			dyn_array_set(&array_collection->slot, curdx
+						, array_collection->initer.rtag);
 			array_collection->count--;
 			break;
 		}

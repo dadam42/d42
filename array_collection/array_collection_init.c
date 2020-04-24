@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:24:23 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/22 23:05:19 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/23 19:27:53 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,34 @@
 #include "array_stack.h"
 
 static bool	array_collection_init_removed(t_array_collection *array_collection
-										, t_stack *stack)
+										, t_stack *stack
+										, t_array_collection_state *state)
 {
-
-	t_array_stack 	def_stack;
+	t_array_stack 	*def_stack;
 
 	if (!stack)
 	{
-		if (!array_stack_init(&def_stack))
+		def_stack = malloc(sizeof(t_array_stack));
+		if (!def_stack)
 			return (false);
-		array_collection->state += array_collection_handle_removed;
-		array_stack_init_stack(&def_stack, stack);
+		stack = malloc(sizeof(t_stack));
+		if (!stack)
+		{
+			free(def_stack);
+			return (false);
+		}
+		array_stack_init(def_stack);
+		array_stack_init_auto_stack(def_stack, stack);
+		*state += array_collection_handle_removed;
+		array_stack_init_stack(def_stack, stack);
 	}
-	array_collection->removed = stack;
+	array_collection->initer.removed = stack;
 	return (true);
 }
 
 static bool	array_collection_init_rtag(t_array_collection *array_collection
-									, void *rtag)
+									, void *rtag
+									, t_array_collection_state *state)
 {
 	
 	if (!rtag)
@@ -40,16 +50,28 @@ static bool	array_collection_init_rtag(t_array_collection *array_collection
 		rtag = malloc(sizeof(bool));
 		if (!rtag)
 			return (false) ;
-		array_collection->state += array_collection_handle_rtag;
+		*state += array_collection_handle_rtag;
 	}
-	array_collection->rtag = rtag;
+	array_collection->initer.rtag = rtag;
 	return (true);
 }
 
-bool		array_collection_init(t_array_collection *array_collection
-							,t_stack *stack, void *rtag)
+static void	array_collection_init__release(
+							t_array_collection *array_collection
+							, t_array_collection_state state)
 {
-	bool	ret;
+	static t_array_collection_release release[] =
+	{array_collection__release_noop, array_collection__release_rtag
+	 , array_collection__release_removed, array_collection__release_full};
+
+	array_collection->_release = release[state];
+}
+
+bool		array_collection_init(t_array_collection *array_collection
+							,t_array_collection_initer *initer)
+{
+	bool						ret;
+	t_array_collection_state	state;
 
 	while (1)
 	{
@@ -58,12 +80,15 @@ bool		array_collection_init(t_array_collection *array_collection
 		if (!ret)
 			break ;
 		ret = false;
-		array_collection->state = 0;
-		if (array_collection_init_removed(array_collection, stack))
+		state = 0;
+		if (array_collection_init_removed(array_collection
+										, initer->removed, &state))
 			break ;
-		if (array_collection_init_rtag(array_collection, rtag))
+		if (array_collection_init_rtag(array_collection
+										, initer->rtag, &state))
 			break ;
 		array_collection->count = 0;
+		array_collection_init__release(array_collection, state);
 		ret = true;
 	}
 	return (ret);

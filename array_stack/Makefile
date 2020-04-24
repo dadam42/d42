@@ -1,21 +1,32 @@
-#-- TARGET definition :
-TARGET_TYPE=lib#one of : exe, lib, default to exe
-TARGET=libarray_stack.a
-#-- libs definition :
-LIBS=libstack libdyn_array#list of libs (prefixed with lib : e.g libfoo) which must be recompiled by this Makefile
-STDLIBS=#list of list which must be include to compile
-#-- definitions for each libfoo from $(LIBS):
-stack_DIR=../stack#mandatory, directory containing both library and its Makefile.
-dyn_array_DIR=../data_structures#mandatory, directory containing both library and its Makefile.
-foo_INC=#optionnal, default to lib_DIR : dirname containing lib's headers files.
-#-- srcs definition :
-SRCS=array_stack_enstack.c array_stack_init.c array_stack_init_stack.c array_stack_peek.c array_stack_pop.c array_stack_release.c array_stack_size.c 
-SRCS_DIRS=
-SRCS_INCS=.#
-#
-#---- dont change anything after this
-#--------------------------------------------------------------------------------------
+# See notice at the end if needed.
+
+EXETARGETS= 
+LIBTARGETS=libarray_stack.a
+libarray_stack_SRCS= array_stack_enstack.c array_stack_init.c array_stack_init_stack.c array_stack_peek.c array_stack_pop.c array_stack_release.c array_stack_size.c auto_stack.c 
+libarray_stack_USELIBS=libdyn_array libiterator libstack
+libdyn_array_DIR=../data_structures
+libiterator_DIR=../iterator
+libstack_DIR=../stack
 
 GEN_MAKEFILE_PATH=../.d42Makefile
 include $(GEN_MAKEFILE_PATH)/genMakefile
 
+# Each target muck be in EXETARGETS or LIBTARGETS
+# Each target can define
+# 		+ it's source file : 									target_SRCS
+# 		+ directories where to find the sources : 				target_DIRS
+# 			~ default to Makefile's directory if not defined
+#		+ directories where to find headers :					target_INCS
+#			~ default to Makefile's directory if not defined
+# 		+ libs this makefile can compile :						target_USELIBS
+# 		+ libs to use but this makefile dont have to compile : 	target_STDLIBS
+# Each lib in any target_USELIBS or target_STDLIBS can define
+# 		+ directory where to find the lib itself : 				lib_DIR
+# 			~ default to Makefile's directory if not defined
+#		+ directories where to find the lib's headers : 		lib_INCS
+#			~ default to lib_DIR if not defined
+# Each lib in any target_USELIBS can define
+# 		+ directory where to find the lib's Makefile :			lib_MDIR
+# 			~ default to lib_DIR if not defined.
+#	
+# The genMakfile included here is responsible for this behavior.	

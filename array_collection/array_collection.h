@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 16:16:45 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/22 22:59:33 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:42:04 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 bool			array_collection_init(
 					t_array_collection	*array_collection
-					, t_stack *stack, void *rtag);
+					, t_array_collection_initer *initer);
 void			array_collection_remove(
 							t_array_collection	*array_collection
 							, void				*element);

@@ -1,15 +1,16 @@
 # See notice at the end if needed.
 
-EXETARGETS= 
-LIBTARGETS=libarray_collection.a
-libarray_collection_SRCS= array_collection_add.c array_collection_contents.c array_collection_init.c array_collection_release.c array_collection_remove.c 
-libarray_collection_USELIBS=libiterator libarray_stack libstack libdyn_array 
-libdyn_array_DIR=../data_structures
-libiterator_DIR=../iterator
-libstack_DIR=../stack
-libarray_stack_DIR=../array_stack
+EXETARGETS=array_collection 
+LIBTARGETS= 
+array_collection_SRCS=array_collection.c 
+array_collection_USELIBS=libarray_collection libdyn_array libiterator libstack libarray_stack
+libarray_collection_DIR=..
+libdyn_array_DIR=../../data_structures
+libiterator_DIR=../../iterator
+libstack_DIR=../../stack
+libarray_stack_DIR=../../array_stack
 
-GEN_MAKEFILE_PATH=../.d42Makefile
+GEN_MAKEFILE_PATH=../../.d42Makefile
 include $(GEN_MAKEFILE_PATH)/genMakefile
 
 # Each target muck be in EXETARGETS or LIBTARGETS
