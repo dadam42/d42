@@ -1,0 +1,32 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+EXETARGETS	Makefile	/^EXETARGETS= $/;"	m
+GEN_MAKEFILE_PATH	Makefile	/^GEN_MAKEFILE_PATH=..\/.d42Makefile$/;"	m
+LIBTARGETS	Makefile	/^LIBTARGETS=libstack.a$/;"	m
+STACK_H	stack.h	14;"	d
+STACK_INT_H	stack_int.h	14;"	d
+_release	stack_int.h	/^	void			(*_release)(void*);$/;"	m	struct:s_stack
+auto_stack_init	auto_stack_init.c	/^void	auto_stack_init(t_stack *stack, void *realisation)$/;"	f
+enstack	stack_int.h	/^	bool			(*enstack)(void*, void*);$/;"	m	struct:s_stack
+libstack_SRCS	Makefile	/^libstack_SRCS=auto_stack_init.c stack.c stack_release.c $/;"	m
+peek	stack_int.h	/^	void 			*(*peek)(void*);$/;"	m	struct:s_stack
+pop	stack_int.h	/^	void 			(*pop)(void*);$/;"	m	struct:s_stack
+realisation	stack_int.h	/^	void			*realisation;$/;"	m	struct:s_stack
+release	stack_int.h	/^	void			(*release)(void*);$/;"	m	struct:s_stack
+s_stack	stack_int.h	/^struct					s_stack$/;"	s
+size	stack_int.h	/^	t_stack_size	(*size)(void*);$/;"	m	struct:s_stack
+stack__release	stack.c	/^void	stack__release(void* stack)$/;"	f
+stack_enstack	stack.c	/^bool			stack_enstack(t_stack *stack, void *element)$/;"	f
+stack_free_release	stack_release.c	/^void	stack_free_release(t_stack *stack)$/;"	f
+stack_init	stack.c	/^void	stack_init(t_stack *stack, void *realisation)$/;"	f
+stack_noop_release	stack_release.c	/^void	stack_noop_release(t_stack *stack)$/;"	f
+stack_peek	stack.c	/^void	*stack_peek(t_stack *stack)$/;"	f
+stack_pop	stack.c	/^void	stack_pop(t_stack *stack)$/;"	f
+stack_release	stack.c	/^void	stack_release(t_stack *stack)$/;"	f
+stack_size	stack.c	/^t_stack_size	stack_size(t_stack *stack)$/;"	f
+t_stack	stack_int.h	/^typedef struct s_stack	t_stack;$/;"	t	typeref:struct:s_stack
+t_stack_size	stack_int.h	/^typedef	size_t			t_stack_size;$/;"	t

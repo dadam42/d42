@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 21:28:11 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/23 19:28:15 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/24 18:53:04 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 void	array_collection_release(t_array_collection *array_collection)
 {
+
+	stack_release(array_collection->initer.removed);
 	array_collection->_release(array_collection);
 	dyn_array_release(&array_collection->slot);
 }

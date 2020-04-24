@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 17:21:53 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/23 18:05:41 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/24 19:33:46 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ struct					s_stack
 void	stack_free_release(t_stack *stack);
 void	stack_noop_release(t_stack *stack);
 void	auto_stack_release(void *stack);
+void	stack__release(void* stack);
 #endif

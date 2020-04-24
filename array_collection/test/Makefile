@@ -1,14 +1,15 @@
 # See notice at the end if needed.
 
-EXETARGETS=array_collection 
+EXETARGETS=init_release 
 LIBTARGETS= 
-array_collection_SRCS=array_collection.c 
-array_collection_USELIBS=libarray_collection libdyn_array libiterator libstack libarray_stack
+init_release_SRCS=init_release.c 
+init_release_USELIBS=libarray_collection libarray_stack libdyn_array libiterator libstack libft 
 libarray_collection_DIR=..
 libdyn_array_DIR=../../data_structures
 libiterator_DIR=../../iterator
 libstack_DIR=../../stack
 libarray_stack_DIR=../../array_stack
+libft_DIR=../../libft
 
 GEN_MAKEFILE_PATH=../../.d42Makefile
 include $(GEN_MAKEFILE_PATH)/genMakefile

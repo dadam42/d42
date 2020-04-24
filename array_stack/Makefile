@@ -2,7 +2,7 @@
 
 EXETARGETS= 
 LIBTARGETS=libarray_stack.a
-libarray_stack_SRCS= array_stack_enstack.c array_stack_init.c array_stack_init_stack.c array_stack_peek.c array_stack_pop.c array_stack_release.c array_stack_size.c auto_stack.c 
+libarray_stack_SRCS=array_stack_enstack.c array_stack_init.c array_stack_init_stack.c array_stack_peek.c array_stack_pop.c array_stack_release.c array_stack_size.c 
 libarray_stack_USELIBS=libdyn_array libiterator libstack
 libdyn_array_DIR=../data_structures
 libiterator_DIR=../iterator

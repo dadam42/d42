@@ -2,7 +2,7 @@
 
 EXETARGETS= 
 LIBTARGETS=libstack.a
-libstack_SRCS=auto_stack_init.c stack.c stack_release.c 
+libstack_SRCS=auto_stack.c auto_stack_init.c stack.c stack_release.c 
 
 GEN_MAKEFILE_PATH=../.d42Makefile
 include $(GEN_MAKEFILE_PATH)/genMakefile

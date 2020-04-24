@@ -1,6 +1,6 @@
 uniq=$(if $(1),$(firstword $(1)) $(call uniq,$(filter-out $(firstword $(1)),$(1))))
 CFLAGS= -Wall -Wextra -Werror $(DEBUG)
-CC=gcc
+CC=/usr/bin/gcc
 define clean_libname
 $(1):=$$(filter-out %.a, $$($(1))) $$(foreach elt, $$(filter %.a, $$($(1))), $$(elt:%.a=%))
 
@@ -38,20 +38,32 @@ STDLIBS:=$(call uniq,$(STDLIBS))
 LIBS:=$(STDLIBS) $(USELIBS)
 $(foreach lib,$(LIBS),$(eval $(call define_lib_incs,$(lib))))
 $(foreach lib, $(LIBS),$(eval $(call define_lib_mdir,$(lib))))
+ifeq ($(RUSELIBS),)
+RUSELIBS:=$(USELIBS)
+else
+RUSELIBS:=$(filter-out $(RUSELIBS),$(USELIBS))
+endif
+export RUSELIBS
+export DEBUG
 
 define target_include
 $(foreach dir,$($(1)_INCS),$(dir:%=-I%)) $(foreach lib,$($(1)_LIBS),$(foreach dir,$($(lib)_INCS),$(dir:%=-I%)))
 endef
 
-define target_ld
-$(foreach lib, $($(1)_USELIBS), $($(lib)_DIR:%=-L%) $(lib:lib%=-l%)) $($(1)_STDLIB:lib%=-l%)
+define target_stdlibs_ld
+$($(1)_STDLIB:lib%=-l%)
+endef
+
+define target_uselibs_inclusion
+$(foreach lib, $($(1)_USELIBS), $($(lib)_DIR)/$(lib).a)
 endef
 
 define target_prerequisite
 $$($(1)_SRCS:%.c=%.o) $$($(1)_USELIBS:%=%.a)
 endef
 
-define usedlib_rule
+define ruselib_rule
+.PHONY:$(1).a
 $(1).a:
 	$$(MAKE) -C $$($(1)_MDIR) $(1).a
 endef
@@ -66,7 +78,19 @@ endef
 define exetarget_rule
 $(1):CFLAGS:=$(call target_include,$(1)) $$(CFLAGS)
 $(1): $(call target_prerequisite,$(1))
-	$$(CC) $$(CFLAGS) $$(filter-out %.a, $$^) -o $$@ $(call target_ld,$(1))
+	$$(CC) $$(CFLAGS) $$(filter-out %.a, $$^) $(call target_uselibs_inclusion,$(1)) -o $$@ $(call target_stdlibs_ld,$(1))
+endef
+
+define ruselib_rfclean_rule
+.PHONY: rfclean_$(1)
+rfclean_$(1):
+	$$(MAKE) -C $$($(1)_MDIR) rfclean
+endef
+
+define ruselib_rre_rule
+.PHONY: rfclean_$(1)
+rre_$(1):
+	$$(MAKE) -C $$($(1)_MDIR) rre
 endef
 
 TARGETS:=$(EXETARGETS) $(LIBTARGETS:%=%.a)
@@ -81,12 +105,21 @@ clean:
 fclean: clean
 	rm -f $(TARGETS)
 
+.PHONY:rfclean
+rfclean:$(foreach lib, $(RUSELIBS), rfclean_$(lib)) fclean
+	
 .PHONY:re
 re: fclean all
-	
 
+.PHONY: rre
+rre: $(foreach lib, $(RUSELIBS), rre_$(lib)) re
+	
 $(foreach target,$(EXETARGETS), $(eval $(call exetarget_rule,$(target))))
 
 $(foreach target,$(LIBTARGETS), $(eval $(call libtarget_rule,$(target))))
 
-$(foreach lib, $(USELIBS), $(eval $(call usedlib_rule,$(lib))))
+$(foreach lib,$(RUSELIBS), $(eval $(call ruselib_rule,$(lib))))
+
+$(foreach lib,$(RUSELIBS),$(eval $(call ruselib_rfclean_rule,$(lib))))
+
+$(foreach lib,$(RUSELIBS),$(eval $(call ruselib_rre_rule,$(lib))))

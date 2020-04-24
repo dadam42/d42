@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:24:23 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/23 19:27:53 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/24 19:15:50 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static bool	array_collection_init_removed(t_array_collection *array_collection
 		array_stack_init(def_stack);
 		array_stack_init_auto_stack(def_stack, stack);
 		*state += array_collection_handle_removed;
-		array_stack_init_stack(def_stack, stack);
 	}
 	array_collection->initer.removed = stack;
 	return (true);
@@ -81,15 +80,16 @@ bool		array_collection_init(t_array_collection *array_collection
 			break ;
 		ret = false;
 		state = 0;
-		if (array_collection_init_removed(array_collection
+		if (!array_collection_init_removed(array_collection
 										, initer->removed, &state))
 			break ;
-		if (array_collection_init_rtag(array_collection
+		if (!array_collection_init_rtag(array_collection
 										, initer->rtag, &state))
 			break ;
 		array_collection->count = 0;
 		array_collection_init__release(array_collection, state);
 		ret = true;
+		break;
 	}
 	return (ret);
 }
