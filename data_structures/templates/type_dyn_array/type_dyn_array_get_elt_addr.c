@@ -5,6 +5,6 @@ void	*type_dyn_array_get_elt_addr(
 			, size_t idx)
 {
 	return (chunk_dyn_array_get_elt_addr(
-			type_dyn_array->chunk_array
+			(t_chunk_dyn_array*)type_dyn_array
 			, idx));
 }

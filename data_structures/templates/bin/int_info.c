@@ -1,0 +1,2 @@
+typedef truc
+int a;

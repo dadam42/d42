@@ -7,7 +7,7 @@ type	type_dyn_array_get_elt(
 	type	ret;
 
 	chunk_dyn_array_get_elt(
-			type_dyn_array->chunk_array
+			(t_chunk_dyn_array*)type_dyn_array
 			, idx
 			, &ret);
 	return (ret);
