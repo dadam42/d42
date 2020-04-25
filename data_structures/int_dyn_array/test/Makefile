@@ -1,15 +1,13 @@
 # See notice at the end if needed.
 
-EXETARGETS= 
-LIBTARGETS=libdyn_array.a libchunk_dyn_array.a
-libdyn_array_SRCS=dyn_array_get_addr.c dyn_array_get_elt.c dyn_array_inc_enlarge.c dyn_array_init.c dyn_array_iterator_deref.c dyn_array_iterator_init_bw_iterator.c dyn_array_iterator_init.c dyn_array_iterator_init_fw_iterator.c dyn_array_iterator_init_iterator.c dyn_array_iterator_next.c dyn_array_iterator_prev.c dyn_array_iterator_reached_begin.c dyn_array_iterator_reached_end.c dyn_array_mult_enlarge.c dyn_array_release.c dyn_array_set.c 
-libdyn_array_USELIBS=libiterator libft
-libiterator_DIR=../iterator
-libft_DIR=../libft
-libchunk_dyn_array_SRCS=chunk_dyn_array_init.c chunk_dyn_array_release.c chunk_dyn_array_set_elt.c chunk_dyn_array_get_elt_addr.c chunk_dyn_array_get_elt.c chunk_dyn_array_enlarge.c chunk_dyn_array_shrink.c chunk_dyn_array_get_size.c
-libchunk_dyn_array_USELIBS=libft
-
-GEN_MAKEFILE_PATH=../.d42Makefile
+EXETARGETS=basic_operations 
+LIBTARGETS= 
+basic_operations_SRCS=basic_operations.c
+basic_operations_USELIBS=libint_dyn_array libchunk_dyn_array libft
+libft_DIR=../../../libft
+libchunk_dyn_array_DIR=../..
+libint_dyn_array_DIR=..
+GEN_MAKEFILE_PATH=../../../.d42Makefile
 include $(GEN_MAKEFILE_PATH)/genMakefile
 
 # Each target muck be in EXETARGETS or LIBTARGETS

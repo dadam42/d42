@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 12:50:15 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/25 17:55:48 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/25 22:52:38 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ void	*chunk_dyn_array_get_elt_addr(t_chunk_dyn_array	*cda
 void	chunk_dyn_array_get_elt(t_chunk_dyn_array	*cda
 							, size_t				idx
 							, void					*addr);
+size_t	chunk_dyn_array_get_size(t_chunk_dyn_array	*cda);
 #endif

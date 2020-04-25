@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 12:56:42 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/25 14:02:38 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/25 22:33:25 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ bool		chunk_dyn_array_init(t_chunk_dyn_array *cda
 	cda->memory = 0;
 	cda->count = count;
 	cda->chunk_size = chunk_size;
-	return (chunk_dyn_array_enlarge(cda, count));
+	return (chunk_dyn_array_do_enlarge(cda, count));
 }

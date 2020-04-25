@@ -2,7 +2,7 @@
 
 EXETARGETS= 
 LIBTARGETS=libint_dyn_array.a
-libint_dyn_array_SRCS=int_dyn_array_get_elt_addr.c int_dyn_array_get_elt.c int_dyn_array_init.c int_dyn_array_release.c int_dyn_array_set_elt.c 
+libint_dyn_array_SRCS=int_dyn_array_get_elt_addr.c int_dyn_array_get_elt.c int_dyn_array_init.c int_dyn_array_release.c int_dyn_array_set_elt.c int_dyn_array_get_size.c int_dyn_array_shrink.c
 libint_dyn_array_USELIBS=libft libchunk_dyn_array
 libft_DIR=../../libft
 libchunk_dyn_array_DIR=..

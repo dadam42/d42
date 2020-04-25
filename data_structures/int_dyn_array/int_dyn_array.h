@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:30:50 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/25 18:30:51 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/25 23:53:31 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ void			*int_dyn_array_get_elt_addr(t_int_dyn_array *int_dyn_array
 									, size_t	idx);
 int				int_dyn_array_get_elt(t_int_dyn_array *int_dyn_array
 									, size_t idx);
+size_t			int_dyn_array_get_size(t_int_dyn_array *int_dyn_array);
+bool			int_dyn_array_shrink(t_int_dyn_array *int_dyn_array);
 void			int_dyn_array_release(t_int_dyn_array *int_dyn_array);
 #endif

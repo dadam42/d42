@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunk_dyn_array_set_elt.c                          :+:      :+:    :+:   */
+/*   chunk_dyn_array_get_size.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/25 13:18:48 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/25 22:42:29 by damouyal         ###   ########.fr       */
+/*   Created: 2020/04/25 22:52:53 by damouyal          #+#    #+#             */
+/*   Updated: 2020/04/25 22:53:53 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "chunk_dyn_array.h"
-#include "libft.h"
 
-bool	chunk_dyn_array_set_elt(t_chunk_dyn_array	*cda
-							, void 					*addr
-							, size_t				idx)
+size_t	chunk_dyn_array_get_size(t_chunk_dyn_array *cda)
 {
-	if (!chunk_dyn_array_enlarge(cda, idx))
-		return (false);
-	ft_memcpy(cda->memory + idx * cda->chunk_size, addr, cda->chunk_size);
-	if (cda->count <= idx)
-		cda->count = idx + 1;
-	return (true);
+	return (cda->count);
 }
