@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_dyn_array_set_elt.c                            :+:      :+:    :+:   */
+/*   int_dyn_array_iterator_at_end.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,8 @@
 
 #include "int_dyn_array.h"
 
-bool	int_dyn_array_set_elt(
-					t_int_dyn_array *int_dyn_array
-					, size_t idx
-					, int elt)
+bool	int_dyn_array_iterator_at_end(
+					t_int_dyn_array_iterator *itor)
 {
-	return (chunk_dyn_array_set_elt(
-			(t_chunk_dyn_array*)int_dyn_array
-			, (void*)(&elt)
-			, idx));
+	return (chunk_dyn_array_iterator_at_end(&itor->itor));
 }

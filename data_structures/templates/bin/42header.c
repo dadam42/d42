@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 00:32:47 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/26 02:13:51 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/26 20:25:57 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void get_time(char *strtime)
 
 int main(int argc, char **argv)
 {
-	char* header[12] =
+	char* header[11] =
 	{
 "/* ************************************************************************** */\n", 
 "/*                                                                            */\n", 
@@ -110,33 +110,40 @@ int main(int argc, char **argv)
 "/*   Updated: %-40s###   ########.fr       */\n", 
 "/*                                                                            */\n", 
 "/* ************************************************************************** */\n",
-"\n"
 	};
 
 	int cur = 0;
 	char buffer_time[19];
 	char buffer40[40];
 	char bufferemail[34];
+	char bufferline[80];
 	char *email;
 	char *user;
 	char *filename;
 
 	get_filename(&filename, &argc, argv);
 	get_user(&user, &argc, argv);
-	get_email(&email, &argc, &argv);
+	get_email(&email, &argc, argv);
 	get_time(buffer_time);
 	sprintf(buffer40, "%s by %s", buffer_time, user);
 	while (cur < 3)
-		printf(header[cur++]);
-	printf(header[3], filename);
-
-	printf(header[4]);
+		printf("%s", header[cur++]);
+	sprintf(bufferline, header[3], filename);
+	printf("%s", bufferline);
+	printf("%s", header[4]);
 	sprintf(bufferemail, "<%s>", email);
-	printf(header[5], user, bufferemail);
-	printf(header[6]);
+	sprintf(bufferline, header[5], user, bufferemail);
+	printf("%s", bufferline);
+	printf("%s", header[6]);
 	cur = 7;
 	while (cur < 9)
-		printf(header[cur++], buffer40);
+	{
+		sprintf(bufferline, header[cur++], buffer40);
+		printf("%s", bufferline);
+	}
 	while (cur < 11)
-		printf(header[cur++]);
+	{
+		printf("%s", header[cur++]);
+	}
+	printf("\n");
 }
