@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 14:05:15 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/25 14:26:18 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/26 14:41:55 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	chunk_dyn_array_get_elt(t_chunk_dyn_array *cda 
 								, size_t idx
-								, void *addr)
+								, void *elt)
 {
 	if (idx < cda->count)
-		ft_memcpy(addr, cda->memory + idx * cda->chunk_size, cda->chunk_size);
+		ft_memcpy(elt, cda->memory + idx * cda->chunk_size, cda->chunk_size);
 }
