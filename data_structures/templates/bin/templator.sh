@@ -11,11 +11,12 @@ sedcommand="s/type([^d_])/${type_name}\1/g ; s/type([^d])/${type_tag}\1/g ; s/TY
 for arg in $@
 do
 	filename=$(echo "$arg" | sed "s/type/$type_tag/g" -)
+	42header $filename > $filename
 	if [ ! -z $inclusion ]
 	then
-		sed -E "s/\!d42inclusion/$inclusion/ ; $sedcommand " $arg > $filename
+		sed -E "s/\!d42inclusion/$inclusion/ ; $sedcommand " $arg >> $filename
 	else
-		sed -E "/\!d42inclusion/d ; $sedcommand " $arg > $filename
+		sed -E "/\!d42inclusion/d ; $sedcommand " $arg >> $filename
 	fi
 done
 rm -f $tmpfile
