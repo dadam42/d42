@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ../char_dyn_array/char_dyn_array_init.c            :+:      :+:    :+:   */
+/*   char_dyn_array_init.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ../char_ <../char_dyn_array/char_dyn_array_init.c>+#+  +:+       +#+        */
+/*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/27 02:18:18 by ../char_dyn_array/char_dyn_array_init.c#+#    #+#             */
-/*   Updated: 2020/03/27 02:18:18 by ../char_dyn_array/char_dyn_array_init.c###   ########.fr       */
+/*   Created: 2020/04/27 04:41:41 by damouyal          #+#    #+#             */
+/*   Updated: 2020/04/27 04:41:41 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

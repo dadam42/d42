@@ -1,20 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ../char_dyn_array/char_dyn_array.h                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ../char_ <../char_dyn_array/char_dyn_array.h>+#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/27 02:18:18 by ../char_dyn_array/char_dyn_array.h#+#    #+#             */
-/*   Updated: 2020/03/27 02:18:18 by ../char_dyn_array/char_dyn_array.h###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CHAR_DYN_ARRAY_H
 # define CHAR_DYN_ARRAY_H
 # include "chunk_dyn_array.h"
 # include <stddef.h>
-!d42inclusion
 
 typedef struct	s_char_dyn_array
 {

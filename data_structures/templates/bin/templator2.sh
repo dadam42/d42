@@ -160,7 +160,13 @@ for file in "${files[@]}"
 do
 	filename="$(echo "$file" | sed "s/type/$type_tag/g" -)"
 	target_filename="$target_directory"/"$filename"
-	42header "$filename" "$user" "$email" > "$target_filename"
+	ctest=${filename%.c}
+	if [[ ! "$filename" = "$ctest" ]]
+	then
+		42header "$filename" "$user" "$email" > "$target_filename"
+	else
+		rm -f "$target_filename"
+	fi
 	arg="$source_directory"/"$file"
 	do_msg "Templating $file"
 	if [[ "$arg" = "$target_filename" ]]
@@ -169,9 +175,8 @@ do
 		do_msg "Abort templating for $file"
 		continue
 	fi
-	if [ ! -z $include ]
+	if [ ! -z "$include" ]
 	then
-		echo "include"
 		sed -E "s/\!d42include/$include/ ; $sedcommand " $arg >> "$target_filename"
 	else
 		sed -E "/\!d42include/d ; $sedcommand " $arg >> "$target_filename"

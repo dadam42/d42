@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char_dyn_array_release.c                           :+:      :+:    :+:   */
+/*   bool_dyn_array_get_fw_iterator.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/27 04:41:41 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/27 04:41:41 by damouyal         ###   ########.fr       */
+/*   Created: 2020/04/27 04:37:37 by damouyal          #+#    #+#             */
+/*   Updated: 2020/04/27 04:37:37 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "char_dyn_array.h"
+#include "bool_dyn_array.h"
 
-void	char_dyn_array_release(
-			t_char_dyn_array *char_dyn_array)
+void	bool_dyn_array_get_fw_iterator(
+			t_bool_dyn_array *da
+			, t_bool_dyn_array_iterator *itor)
 {
-	chunk_dyn_array_release(
-		(t_chunk_dyn_array*)char_dyn_array);
+	chunk_dyn_array_get_fw_iterator(
+		&da->chunk_dyn_array, &itor->itor);
 }
