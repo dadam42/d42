@@ -165,7 +165,13 @@ do
 	then
 		42header "$filename" "$user" "$email" > "$target_filename"
 	else
-		rm -f "$target_filename"
+		ctest=${filename%.h}
+		if [[ ! "$filename" = "$ctest" ]]
+		then
+			42header "$filename" "$user" "$email" > "$target_filename"
+		else
+			rm -f "$target_filename"
+		fi
 	fi
 	arg="$source_directory"/"$file"
 	do_msg "Templating $file"
