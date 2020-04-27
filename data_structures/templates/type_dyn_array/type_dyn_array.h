@@ -2,7 +2,7 @@
 # define TYPE_DYN_ARRAY_H
 # include "chunk_dyn_array.h"
 # include <stddef.h>
-!d42inclusion
+!d42include
 
 typedef struct	s_type_dyn_array
 {

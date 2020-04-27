@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 00:32:47 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/26 20:25:57 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/27 03:58:38 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@
 #define defemail "3rd@cl.arg"
 #define deffilename "1stclarg"
 
-void get_email(char **email, int *argc, char **argv)
+void get_email(char **email, int *argc, char ***argv)
 {
 	char *maybe;
 	while (1)
 	{
 		if ((*argc > 1)
-			&& (ft_strlen(argv[1]) > 0))
+			&& (ft_strlen((*argv)[1]) > 0))
 		{
+			*email = (*argv)[1];
 			(*argc)--;
-			*email = argv[1];
+			(*argv)++;
 			break;
 		}
 		maybe = getenv("MAIL");
@@ -40,16 +41,17 @@ void get_email(char **email, int *argc, char **argv)
 		break;
 	}
 }
-void get_user(char **user, int *argc, char **argv)
+void get_user(char **user, int *argc, char ***argv)
 {
 	char *maybe;
 	while (1)
 	{
 		if ((*argc > 1)
-			&& (ft_strlen(argv[1]) > 0))
+			&& (ft_strlen((*argv)[1]) > 0))
 		{
+			*user = (*argv)[1];
 			(*argc)--;
-			*user = argv[1];
+			(*argv)++;
 			break;
 		}
 		maybe = getenv("USER");
@@ -63,17 +65,18 @@ void get_user(char **user, int *argc, char **argv)
 	}
 }
 
-void get_filename(char **filename, int *argc, char **argv)
+void get_filename(char **filename, int *argc, char ***argv)
 {
 	char *maybe;
 
 	while (1)
 	{
 		if ((*argc > 1)
-			&& (ft_strlen(argv[1]) > 0))
+			&& (ft_strlen((*argv)[1]) > 0))
 		{
+			*filename = (*argv)[1];
 			(*argc)--;
-			*filename = argv[1];
+			(*argv)++;
 			break;
 		}
 		maybe = getenv("D42FILENAME");
@@ -91,7 +94,8 @@ void get_time(char *strtime)
 {
 	time_t t = time(NULL);
 	struct tm st = *localtime(&t);
-	sprintf(strtime, "%d/%02d/%02d %02d:%02d:%02d", st.tm_year + 1900, st.tm_mon
+	sprintf(strtime, "%d/%02d/%02d %02d:%02d:%02d", st.tm_year + 1900
+					, st.tm_mon + 1
 					, st.tm_mday, st.tm_hour, st.tm_min, st.tm_min);
 }
 
@@ -121,9 +125,9 @@ int main(int argc, char **argv)
 	char *user;
 	char *filename;
 
-	get_filename(&filename, &argc, argv);
-	get_user(&user, &argc, argv);
-	get_email(&email, &argc, argv);
+	get_filename(&filename, &argc, &argv);
+	get_user(&user, &argc, &argv);
+	get_email(&email, &argc, &argv);
 	get_time(buffer_time);
 	sprintf(buffer40, "%s by %s", buffer_time, user);
 	while (cur < 3)

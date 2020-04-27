@@ -1,5 +1,4 @@
 #!/bin/bash
-
 print_msg() {
 	echo 
 	for msg in "$@"
@@ -108,12 +107,13 @@ fi
 
 if [[ $nfiles = 0 ]]
 then
-	if [[ ! -z "$source_directory_provided" ]]
+	if [[ -z "$source_directory_provided" ]]
 	then
 	err_exit "No file nor directory provided, cannot template :("
 	else
 	do_msg "Grabbing all files from $source_directory"
 	files=($source_directory/*)
+	files=($(basename -s '' "${files[@]}"))
 	fi
 fi
 
@@ -174,6 +174,6 @@ do
 		echo "include"
 		sed -E "s/\!d42include/$include/ ; $sedcommand " $arg >> "$target_filename"
 	else
-		sed -E "/\!d42include/{ N ; N ; d } ; $sedcommand " $arg >> "$target_filename"
+		sed -E "/\!d42include/d ; $sedcommand " $arg >> "$target_filename"
 	fi
 done
