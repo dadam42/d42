@@ -19,4 +19,3 @@ do
 		sed -E "/\!d42inclusion/d ; $sedcommand " $arg >> $filename
 	fi
 done
-rm -f $tmpfile
