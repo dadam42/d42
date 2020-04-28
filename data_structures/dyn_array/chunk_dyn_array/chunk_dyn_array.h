@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 12:50:15 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/26 20:07:51 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/27 21:48:20 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	chunk_dyn_array_get_elt(t_chunk_dyn_array			*cda
 							, void							*elt);
 size_t	chunk_dyn_array_get_size(
 							t_chunk_dyn_array				*cda);
-bool			chunk_dyn_array_shrink(
+bool	chunk_dyn_array_shrink(
 							t_chunk_dyn_array				*cda);
 /*
 ** Iterators
@@ -45,7 +45,7 @@ bool			chunk_dyn_array_shrink(
 
 void	chunk_dyn_array_get_fw_iterator(
 							t_chunk_dyn_array				*cda
-							, t_chunk_dyn_array_iterator		*iterator);
+							, t_chunk_dyn_array_iterator	*iterator);
 void	chunk_dyn_array_get_bw_iterator(
 							t_chunk_dyn_array				*cda
 							, t_chunk_dyn_array_iterator	*iterator);

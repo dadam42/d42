@@ -4,9 +4,9 @@ EXETARGETS=
 LIBTARGETS=libchunk_dyn_array.a
 libchunk_dyn_array_SRCS=chunk_dyn_array_get_bw_iterator.c chunk_dyn_array_get_elt_addr.c chunk_dyn_array_get_elt.c chunk_dyn_array_get_fw_iterator.c chunk_dyn_array_get_size.c chunk_dyn_array_init.c chunk_dyn_array_iterator_at_end.c chunk_dyn_array_iterator_at_start.c chunk_dyn_array_iterator_deref.c chunk_dyn_array_iterator_next.c chunk_dyn_array_iterator_reset_position.c chunk_dyn_array_release.c chunk_dyn_array_set_elt.c chunk_dyn_array_shrink.c 
 libchunk_dyn_array_USELIBS=libft
-libft_DIR=../../libft 
+libft_DIR=../../../libft 
 
-GEN_MAKEFILE_PATH=../../.d42Makefile
+GEN_MAKEFILE_PATH=../../../.d42Makefile
 include $(GEN_MAKEFILE_PATH)/genMakefile
 
 # Each target muck be in EXETARGETS or LIBTARGETS
