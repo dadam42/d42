@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 17:24:39 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/26 20:43:49 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/28 19:36:40 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,7 @@
 bool	chunk_dyn_array_fw_iterator_at_end(
 			t_chunk_dyn_array_iterator *iterator)
 {
-	return (iterator->position == iterator->array->count);
+	if (iterator->array->count <= 1)
+		return (true);
+	return (iterator->position == iterator->array->count - 1);
 }

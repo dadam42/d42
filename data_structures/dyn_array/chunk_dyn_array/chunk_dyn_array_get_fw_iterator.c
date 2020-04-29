@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 17:24:35 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/26 17:30:59 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/28 19:49:32 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	chunk_dyn_array_get_fw_iterator(
 {
 	iterator->array = cda;
 	iterator->next = chunk_dyn_array_fw_iterator_next;
-	iterator->deref = chunk_dyn_array_fw_iterator_deref;
+	iterator->next_ = chunk_dyn_array_iterator_first_next_;
 	iterator->reset_position = chunk_dyn_array_fw_iterator_reset_position;
 	iterator->at_start = chunk_dyn_array_fw_iterator_at_start;
 	iterator->at_end = chunk_dyn_array_fw_iterator_at_end;

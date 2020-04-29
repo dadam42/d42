@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 20:27:27 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/26 20:57:08 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/28 15:24:53 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void			int_dyn_array_get_bw_iterator(
 					, t_int_dyn_array_iterator	*itor);
 void			int_dyn_array_iterator_reset_position(
 					t_int_dyn_array_iterator	*itor);
-void			int_dyn_array_iterator_next(
+bool			int_dyn_array_iterator_next(
 					t_int_dyn_array_iterator	*itor);
 int				*int_dyn_array_iterator_deref(
 					t_int_dyn_array_iterator	*itor);

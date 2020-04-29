@@ -6,14 +6,14 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 20:33:33 by damouyal          #+#    #+#             */
-/*   Updated: 2020/03/26 20:33:33 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/28 15:25:35 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "int_dyn_array.h"
 
-void	int_dyn_array_iterator_next(
+bool	int_dyn_array_iterator_next(
 			t_int_dyn_array_iterator *itor)
 {
-	chunk_dyn_array_iterator_next(&itor->itor);
+	return (chunk_dyn_array_iterator_next(&itor->itor));
 }

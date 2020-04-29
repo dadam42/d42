@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 12:50:15 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/27 21:48:20 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/28 15:00:08 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	chunk_dyn_array_get_bw_iterator(
 							, t_chunk_dyn_array_iterator	*iterator);
 void	chunk_dyn_array_iterator_reset_position(
 							t_chunk_dyn_array_iterator		*iterator);
-void	chunk_dyn_array_iterator_next(
+bool	chunk_dyn_array_iterator_next(
 							t_chunk_dyn_array_iterator		*iterator);
 void	*chunk_dyn_array_iterator_deref(
 							t_chunk_dyn_array_iterator		*iterator);

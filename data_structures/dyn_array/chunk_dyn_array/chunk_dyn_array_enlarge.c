@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 13:26:14 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/25 22:42:25 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/29 13:23:04 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	chunk_dyn_array_do_enlarge(t_chunk_dyn_array *cda, size_t idx)
 	nsize = cda->size;
 	if (nsize < chunk_dyn_array_min_size)
 		nsize = chunk_dyn_array_min_size;
-	while (nsize < idx)
+	while (nsize <= idx)
 		nsize *=2;
 	nmemory = malloc(cda->chunk_size * nsize);
 	if (!nmemory)

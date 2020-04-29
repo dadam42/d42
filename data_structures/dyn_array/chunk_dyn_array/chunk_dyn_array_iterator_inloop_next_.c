@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunk_dyn_array_iterator_next.c                    :+:      :+:    :+:   */
+/*   chunk_dyn_array_iterator_inloop_next_.c            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/26 17:43:43 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/28 15:10:13 by damouyal         ###   ########.fr       */
+/*   Created: 2020/04/28 14:48:00 by damouyal          #+#    #+#             */
+/*   Updated: 2020/04/28 17:53:06 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "chunk_dyn_array.h"
 
-bool	chunk_dyn_array_iterator_next(
-							t_chunk_dyn_array_iterator *iterator)
+bool	chunk_dyn_array_iterator_inloop_next_(
+			t_chunk_dyn_array_iterator *iterator)
 {
-	return (iterator->next_(iterator));
+	if (chunk_dyn_array_iterator_at_end(iterator))
+	{
+		iterator->next_ = chunk_dyn_array_iterator_noop_next_;
+		return (false);
+	}
+	iterator->next(iterator);
+	return (true);
 }

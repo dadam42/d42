@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 13:12:44 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/26 18:40:58 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/29 13:46:32 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ struct s_chunk_dyn_array_iterator
 	size_t				position;
 	void				(*next)(
 							t_chunk_dyn_array_iterator*);
-	void				*(*deref)(
+	bool				(*next_)(
 							t_chunk_dyn_array_iterator*);
 	void				(*reset_position)(
 							t_chunk_dyn_array_iterator*);
@@ -63,9 +63,37 @@ struct s_chunk_dyn_array_iterator
 							t_chunk_dyn_array_iterator*);
 };
 
-void	chunk_dyn_array_fw_iterator_next(
+typedef	void	(*t_chunk_dyn_array_iterator_loop_action)(
+							t_chunk_dyn_array_iterator *iterator);
+
+bool	chunk_dyn_array_iterator_loop_test(
+							t_chunk_dyn_array_iterator *iterator);
+void	chunk_dyn_array_iterator_loop_act(
+							t_chunk_dyn_array_iterator *iterator
+							, t_chunk_dyn_array_iterator_loop_action before
+							, t_chunk_dyn_array_iterator_loop_action after);
+void	chunk_dyn_array_iterator_loop_act_before(
+							t_chunk_dyn_array_iterator_loop_action before);
+void	chunk_dyn_array_iterator_loop_act_after(
+							t_chunk_dyn_array_iterator *iterator
+							, t_chunk_dyn_array_iterator_loop_action after);
+
+/*
+** Private iterators' members
+*/
+
+bool	chunk_dyn_array_iterator_first_next_(
 			t_chunk_dyn_array_iterator	*iterator);
-void	*chunk_dyn_array_fw_iterator_deref(
+bool	chunk_dyn_array_iterator_inloop_next_(
+			t_chunk_dyn_array_iterator	*iterator);
+bool	chunk_dyn_array_iterator_noop_next_(
+			t_chunk_dyn_array_iterator	*iterator);
+
+/*
+** Type specific iterators' members 
+*/
+
+void	chunk_dyn_array_fw_iterator_next(
 			t_chunk_dyn_array_iterator	*iterator);
 void	chunk_dyn_array_fw_iterator_reset_position(
 			t_chunk_dyn_array_iterator	*iterator);
@@ -74,8 +102,6 @@ bool	chunk_dyn_array_fw_iterator_at_end(
 bool	chunk_dyn_array_fw_iterator_at_start(
 			t_chunk_dyn_array_iterator	*iterator);
 void	chunk_dyn_array_bw_iterator_next(
-			t_chunk_dyn_array_iterator	*iterator);
-void	*chunk_dyn_array_bw_iterator_deref(
 			t_chunk_dyn_array_iterator	*iterator);
 void	chunk_dyn_array_bw_iterator_reset_position(
 			t_chunk_dyn_array_iterator	*iterator);

@@ -49,7 +49,7 @@ void			char_dyn_array_get_bw_iterator(
 					, t_char_dyn_array_iterator	*itor);
 void			char_dyn_array_iterator_reset_position(
 					t_char_dyn_array_iterator	*itor);
-void			char_dyn_array_iterator_next(
+bool			char_dyn_array_iterator_next(
 					t_char_dyn_array_iterator	*itor);
 char			*char_dyn_array_iterator_deref(
 					t_char_dyn_array_iterator	*itor);
