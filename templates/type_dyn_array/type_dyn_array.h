@@ -22,7 +22,7 @@ bool			type_dyn_array_set_elt(
 					t_type_dyn_array *type_dyn_array
 					, size_t	idx
 					, type		elt);
-void			*type_dyn_array_get_elt_addr(
+type			*type_dyn_array_get_elt_addr(
 					t_type_dyn_array *type_dyn_array
 					, size_t	idx);
 type			type_dyn_array_get_elt(
