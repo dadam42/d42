@@ -7,7 +7,7 @@ libvs_dyn_array_USELIBS=libft libchunk_dyn_array.a
 libft_DIR=../../libft 
 libchunk_dyn_array_DIR=../chunk_dyn_array
 
-GEN_MAKEFILE_PATH=../../.d42Makefile
+GEN_MAKEFILE_PATH=../../../.d42Makefile
 include $(GEN_MAKEFILE_PATH)/genMakefile
 
 # Each target muck be in EXETARGETS or LIBTARGETS

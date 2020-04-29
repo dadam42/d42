@@ -6,13 +6,14 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 04:00:00 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/27 04:09:48 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/04/29 18:05:06 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VS_DYN_ARRAY_H
 # define VS_DYN_ARRAY_H
 # include "chunk_dyn_array.h"
+# include "vs_dyn_array_int.h"
 # include <stddef.h>
 
 typedef struct	s_vs_dyn_array
