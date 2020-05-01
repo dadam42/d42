@@ -50,7 +50,7 @@ void			type_dyn_array_get_bw_iterator(
 					, t_type_dyn_array_iterator	*itor);
 void			type_dyn_array_iterator_reset_position(
 					t_type_dyn_array_iterator	*itor);
-void			type_dyn_array_iterator_next(
+bool			type_dyn_array_iterator_next(
 					t_type_dyn_array_iterator	*itor);
 type			*type_dyn_array_iterator_deref(
 					t_type_dyn_array_iterator	*itor);
