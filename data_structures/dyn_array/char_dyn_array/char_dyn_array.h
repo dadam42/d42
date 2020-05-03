@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   char_dyn_array.h                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/29 18:53:53 by damouyal          #+#    #+#             */
+/*   Updated: 2020/04/29 18:53:53 by damouyal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CHAR_DYN_ARRAY_H
 # define CHAR_DYN_ARRAY_H
 # include "chunk_dyn_array.h"
@@ -15,11 +27,13 @@ typedef struct	s_char_dyn_array
 bool			char_dyn_array_init(
 					t_char_dyn_array *char_dyn_array
 					, size_t	count);
+void			char_dyn_array_release(
+					t_char_dyn_array *char_dyn_array);
 bool			char_dyn_array_set_elt(
 					t_char_dyn_array *char_dyn_array
 					, size_t	idx
 					, char		elt);
-void			*char_dyn_array_get_elt_addr(
+char			*char_dyn_array_get_elt_addr(
 					t_char_dyn_array *char_dyn_array
 					, size_t	idx);
 char			char_dyn_array_get_elt(
@@ -28,8 +42,6 @@ char			char_dyn_array_get_elt(
 size_t			char_dyn_array_get_size(
 					t_char_dyn_array *char_dyn_array);
 bool			char_dyn_array_shrink(
-					t_char_dyn_array *char_dyn_array);
-void			char_dyn_array_release(
 					t_char_dyn_array *char_dyn_array);
 
 /*

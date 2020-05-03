@@ -4,7 +4,7 @@ EXETARGETS=
 LIBTARGETS=libvs_dyn_array.a
 libvs_dyn_array_SRCS=vs_dyn_array_get_bw_iterator.c vs_dyn_array_get_elt_addr.c vs_dyn_array_get_elt.c vs_dyn_array_get_fw_iterator.c vs_dyn_array_get_size.c vs_dyn_array_init.c vs_dyn_array_iterator_at_end.c vs_dyn_array_iterator_at_start.c vs_dyn_array_iterator_deref.c vs_dyn_array_iterator_next.c vs_dyn_array_iterator_reset_position.c vs_dyn_array_release.c vs_dyn_array_set_elt.c vs_dyn_array_shrink.c 
 libvs_dyn_array_USELIBS=libft libchunk_dyn_array.a
-libft_DIR=../../libft 
+libft_DIR=../../../libft 
 libchunk_dyn_array_DIR=../chunk_dyn_array
 
 GEN_MAKEFILE_PATH=../../../.d42Makefile

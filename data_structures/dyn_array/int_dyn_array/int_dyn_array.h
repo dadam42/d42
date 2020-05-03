@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/26 20:27:27 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/28 15:24:53 by damouyal         ###   ########.fr       */
+/*   Created: 2020/04/29 18:45:45 by damouyal          #+#    #+#             */
+/*   Updated: 2020/04/29 18:48:42 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ typedef struct	s_int_dyn_array
 bool			int_dyn_array_init(
 					t_int_dyn_array *int_dyn_array
 					, size_t	count);
+void			int_dyn_array_release(
+					t_int_dyn_array *int_dyn_array);
 bool			int_dyn_array_set_elt(
 					t_int_dyn_array *int_dyn_array
 					, size_t	idx
 					, int		elt);
-void			*int_dyn_array_get_elt_addr(
+int				*int_dyn_array_get_elt_addr(
 					t_int_dyn_array *int_dyn_array
 					, size_t	idx);
 int				int_dyn_array_get_elt(
@@ -40,8 +42,6 @@ int				int_dyn_array_get_elt(
 size_t			int_dyn_array_get_size(
 					t_int_dyn_array *int_dyn_array);
 bool			int_dyn_array_shrink(
-					t_int_dyn_array *int_dyn_array);
-void			int_dyn_array_release(
 					t_int_dyn_array *int_dyn_array);
 
 /*
@@ -65,8 +65,8 @@ bool			int_dyn_array_iterator_next(
 					t_int_dyn_array_iterator	*itor);
 int				*int_dyn_array_iterator_deref(
 					t_int_dyn_array_iterator	*itor);
-bool			int_dyn_array_iterator_at_end(
+bool			int_dyn_array_iterator_at_start(
 					t_int_dyn_array_iterator	*itor);
-bool			int_dyn_array_iterator_at_begin(
+bool			int_dyn_array_iterator_at_end(
 					t_int_dyn_array_iterator	*itor);
 #endif

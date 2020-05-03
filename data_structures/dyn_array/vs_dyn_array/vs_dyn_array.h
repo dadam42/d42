@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/27 04:00:00 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/29 18:05:06 by damouyal         ###   ########.fr       */
+/*   Created: 2020/04/29 18:54:54 by damouyal          #+#    #+#             */
+/*   Updated: 2020/04/29 18:59:28 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VS_DYN_ARRAY_H
 # define VS_DYN_ARRAY_H
 # include "chunk_dyn_array.h"
-# include "vs_dyn_array_int.h"
 # include <stddef.h>
 
 typedef struct	s_vs_dyn_array
@@ -28,11 +27,13 @@ typedef struct	s_vs_dyn_array
 bool			vs_dyn_array_init(
 					t_vs_dyn_array *vs_dyn_array
 					, size_t	count);
+void			vs_dyn_array_release(
+					t_vs_dyn_array *vs_dyn_array);
 bool			vs_dyn_array_set_elt(
 					t_vs_dyn_array *vs_dyn_array
 					, size_t	idx
 					, void		*elt);
-void			*vs_dyn_array_get_elt_addr(
+void			**vs_dyn_array_get_elt_addr(
 					t_vs_dyn_array *vs_dyn_array
 					, size_t	idx);
 void			*vs_dyn_array_get_elt(
@@ -41,8 +42,6 @@ void			*vs_dyn_array_get_elt(
 size_t			vs_dyn_array_get_size(
 					t_vs_dyn_array *vs_dyn_array);
 bool			vs_dyn_array_shrink(
-					t_vs_dyn_array *vs_dyn_array);
-void			vs_dyn_array_release(
 					t_vs_dyn_array *vs_dyn_array);
 
 /*
@@ -62,7 +61,7 @@ void			vs_dyn_array_get_bw_iterator(
 					, t_vs_dyn_array_iterator	*itor);
 void			vs_dyn_array_iterator_reset_position(
 					t_vs_dyn_array_iterator	*itor);
-void			vs_dyn_array_iterator_next(
+bool			vs_dyn_array_iterator_next(
 					t_vs_dyn_array_iterator	*itor);
 void			**vs_dyn_array_iterator_deref(
 					t_vs_dyn_array_iterator	*itor);

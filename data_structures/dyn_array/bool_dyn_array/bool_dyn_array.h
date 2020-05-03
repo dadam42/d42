@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/27 04:53:53 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/27 04:53:53 by damouyal         ###   ########.fr       */
+/*   Created: 2020/04/29 18:52:52 by damouyal          #+#    #+#             */
+/*   Updated: 2020/04/29 18:52:52 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define BOOL_DYN_ARRAY_H
 # include "chunk_dyn_array.h"
 # include <stddef.h>
-# include <stdbool.h>
 
 typedef struct	s_bool_dyn_array
 {
@@ -28,11 +27,13 @@ typedef struct	s_bool_dyn_array
 bool			bool_dyn_array_init(
 					t_bool_dyn_array *bool_dyn_array
 					, size_t	count);
+void			bool_dyn_array_release(
+					t_bool_dyn_array *bool_dyn_array);
 bool			bool_dyn_array_set_elt(
 					t_bool_dyn_array *bool_dyn_array
 					, size_t	idx
 					, bool		elt);
-void			*bool_dyn_array_get_elt_addr(
+bool			*bool_dyn_array_get_elt_addr(
 					t_bool_dyn_array *bool_dyn_array
 					, size_t	idx);
 bool			bool_dyn_array_get_elt(
@@ -41,8 +42,6 @@ bool			bool_dyn_array_get_elt(
 size_t			bool_dyn_array_get_size(
 					t_bool_dyn_array *bool_dyn_array);
 bool			bool_dyn_array_shrink(
-					t_bool_dyn_array *bool_dyn_array);
-void			bool_dyn_array_release(
 					t_bool_dyn_array *bool_dyn_array);
 
 /*
@@ -62,7 +61,7 @@ void			bool_dyn_array_get_bw_iterator(
 					, t_bool_dyn_array_iterator	*itor);
 void			bool_dyn_array_iterator_reset_position(
 					t_bool_dyn_array_iterator	*itor);
-void			bool_dyn_array_iterator_next(
+bool			bool_dyn_array_iterator_next(
 					t_bool_dyn_array_iterator	*itor);
 bool			*bool_dyn_array_iterator_deref(
 					t_bool_dyn_array_iterator	*itor);
