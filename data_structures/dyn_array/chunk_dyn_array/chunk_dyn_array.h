@@ -6,14 +6,13 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 12:50:15 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/28 15:00:08 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/05/04 21:00:10 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHUNK_DYN_ARRAY_H
 # define CHUNK_DYN_ARRAY_H
 # include "chunk_dyn_array_int.h"
-
 
 /*
 ** Basic actions

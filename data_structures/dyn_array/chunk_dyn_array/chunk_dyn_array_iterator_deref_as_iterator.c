@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunk_dyn_array_iterator_first_next_.c             :+:      :+:    :+:   */
+/*   chunk_dyn_array_iterator_deref_as_iterato          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/28 14:43:11 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/28 19:39:17 by damouyal         ###   ########.fr       */
+/*   Created: 2020/05/04 21:54:39 by damouyal          #+#    #+#             */
+/*   Updated: 2020/05/04 22:16:03 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "chunk_dyn_array.h"
 
-bool	chunk_dyn_array_iterator_first_next_(
-			t_chunk_dyn_array_iterator	*iterator)
+void	*chunk_dyn_array_iterator_deref_as_iterator(t_iterator *iterator)
 {
-	if (!chunk_dyn_array_iterator_at_start(iterator))
-	{
-		iterator->next_ = chunk_dyn_array_iterator_noop_next_;
-		return (false);
-	}
-	iterator->next_ = chunk_dyn_array_iterator_inloop_next_;
-	return (true);
+	return (chunk_dyn_array_get_elt_addr(
+		((t_chunk_dyn_array_iterator*)iterator)->array
+		, ((t_chunk_dyn_array_iterator*)iterator)->position));
 }

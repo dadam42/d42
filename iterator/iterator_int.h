@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 03:46:23 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/23 05:22:57 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/05/04 20:40:07 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,47 @@ typedef struct s_iterator	t_iterator;
 
 struct						s_iterator
 {
-	bool	handle_realisation;
-	void	*realisation;
-	void	(*next)(void*);
-	void	*(*deref)(void*);
-	void	(*release)(void*);
-	bool	(*reached_end)(void*);
+	bool				(*next_)(
+							t_iterator*);
+	void				(*next)(
+							t_iterator*);
+	void				(*reset_position_)(
+							t_iterator*);
+	void				(*reset_position)(
+							t_iterator*);
+	bool				(*at_end)(
+							t_iterator*);
+	bool				(*at_start)(
+							t_iterator*);
+	void				*(*deref)(
+							t_iterator*);
 };
 
-void	iterator_noop_release(void *realisation);
+typedef struct s_iterator_initer	t_iterator_initer;
+struct s_iterator_initer
+{
+	void				(*next)(
+							t_iterator*);
+	void				(*reset_position)(
+							t_iterator*);
+	bool				(*at_end)(
+							t_iterator*);
+	bool				(*at_start)(
+							t_iterator*);
+	void				*(*deref)(
+							t_iterator*);
+};
+
+/*
+** Private iterators' members
+*/
+
+bool	iterator_first_next_(
+			t_iterator	*iterator);
+bool	iterator_inloop_next_(
+			t_iterator	*iterator);
+bool	iterator_noop_next_(
+			t_iterator	*iterator);
+void	iterator_reset_position_(
+			t_iterator *iterator);
 #endif

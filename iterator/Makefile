@@ -2,8 +2,7 @@
 
 EXETARGETS= 
 LIBTARGETS=libiterator.a
-libiterator_SRCS=iterator_apply.c iterator.c iterator_noop_release.c 
-
+libiterator_SRCS=iterator_at_end.c iterator_at_start.c iterator_deref.c iterator_first_next_.c iterator_init.c iterator_inloop_next_.c iterator_next.c iterator_noop_next_.c iterator_reset_position.c iterator_reset_position_.c 
 GEN_MAKEFILE_PATH=../.d42Makefile
 include $(GEN_MAKEFILE_PATH)/genMakefile
 

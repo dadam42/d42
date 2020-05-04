@@ -3,12 +3,13 @@
 EXETARGETS=basic_operations iterators
 LIBTARGETS= 
 basic_operations_SRCS=basic_operations.c
-basic_operations_USELIBS=libint_dyn_array libchunk_dyn_array libft
+basic_operations_USELIBS=libint_dyn_array libchunk_dyn_array libft libiterator
 iterators_SRCS=iterators.c
 iterators_USELIBS=$(basic_operations_USELIBS)
 libft_DIR=../../../../libft
 libchunk_dyn_array_DIR=../../chunk_dyn_array
 libint_dyn_array_DIR=..
+libiterator_DIR=../../../../iterator
 GEN_MAKEFILE_PATH=../../../../.d42Makefile
 include $(GEN_MAKEFILE_PATH)/genMakefile
 

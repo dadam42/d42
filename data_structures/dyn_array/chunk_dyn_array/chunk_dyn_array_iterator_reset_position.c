@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 17:24:32 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/26 17:24:33 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/05/04 22:06:25 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	chunk_dyn_array_iterator_reset_position(
 			t_chunk_dyn_array_iterator *iterator)
 {
-	iterator->reset_position(iterator);
+	iterator_reset_position(&iterator->iterator);
 }

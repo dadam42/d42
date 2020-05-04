@@ -3,9 +3,10 @@
 EXETARGETS= 
 LIBTARGETS=libint_dyn_array.a
 libint_dyn_array_SRCS=int_dyn_array_get_bw_iterator.c int_dyn_array_get_elt_addr.c int_dyn_array_get_elt.c int_dyn_array_get_fw_iterator.c int_dyn_array_get_size.c int_dyn_array_init.c int_dyn_array_iterator_at_end.c int_dyn_array_iterator_at_start.c int_dyn_array_iterator_deref.c int_dyn_array_iterator_next.c int_dyn_array_iterator_reset_position.c int_dyn_array_release.c int_dyn_array_set_elt.c int_dyn_array_shrink.c 
-libint_dyn_array_USELIBS=libft libchunk_dyn_array.a
+libint_dyn_array_USELIBS=libft libchunk_dyn_array libiterator
 libft_DIR=../../../libft 
 libchunk_dyn_array_DIR=../chunk_dyn_array
+libiterator_DIR=../../../iterator
 
 GEN_MAKEFILE_PATH=../../../.d42Makefile
 include $(GEN_MAKEFILE_PATH)/genMakefile

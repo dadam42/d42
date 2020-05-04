@@ -6,7 +6,7 @@
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 18:37:01 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/26 18:38:16 by damouyal         ###   ########.fr       */
+/*   Updated: 2020/05/04 22:10:15 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 bool	chunk_dyn_array_iterator_at_end(
 							t_chunk_dyn_array_iterator *iterator)
 {
-	return (iterator->at_end(iterator));
+	return (iterator_at_end(&iterator->iterator));
 }
