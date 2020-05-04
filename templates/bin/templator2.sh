@@ -28,7 +28,6 @@ do_msg() {
 }
 
 parse_options() {
-	echo "$#"
 	while [[ $# -gt 0 ]]
 	do
 		key="$1"
@@ -316,9 +315,9 @@ do
 		do_msg "Abort templating for ${files[$filedx]}."
 		continue
 	fi
-	if [[ ! "${files[$filedx]}" =~ \.(c|h)(.ptr)? ]]
+	if [[ "${target_filenames[$filedx]}" =~ \.(c|h) ]]
 	then
-		42header "$source_file" "$user" "$email" > "$target_file"
+		42header "${target_filenames[$filedx]}" "$user" "$email" > "$target_file"
 	fi
 	do_msg "Templating ${files[$filedx]}"
 	if [ ! -z "$include" ]
