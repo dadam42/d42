@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/29 18:54:54 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/29 18:54:54 by damouyal         ###   ########.fr       */
+/*   Created: 2020/05/05 03:32:32 by damouyal          #+#    #+#             */
+/*   Updated: 2020/05/05 03:32:32 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ void	vs_dyn_array_get_fw_iterator(
 			, t_vs_dyn_array_iterator *itor)
 {
 	chunk_dyn_array_get_fw_iterator(
-		&da->chunk_dyn_array, &itor->itor);
+		&da->cda, &itor->itor);
 }

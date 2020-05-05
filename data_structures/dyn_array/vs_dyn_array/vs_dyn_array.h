@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: damouyal <dadamouyal42@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/29 18:54:54 by damouyal          #+#    #+#             */
-/*   Updated: 2020/04/29 18:59:28 by damouyal         ###   ########.fr       */
+/*   Created: 2020/05/05 03:32:32 by damouyal          #+#    #+#             */
+/*   Updated: 2020/05/05 03:32:32 by damouyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct	s_vs_dyn_array
 {
-	t_chunk_dyn_array	chunk_dyn_array;
+	t_chunk_dyn_array	cda;
 }				t_vs_dyn_array;
 
 /*
@@ -34,7 +34,7 @@ bool			vs_dyn_array_set_elt(
 					, size_t	idx
 					, void		*elt);
 void			**vs_dyn_array_get_elt_addr(
-					t_vs_dyn_array *vs_dyn_array
+					t_vs_dyn_array *vs_dyn_archray
 					, size_t	idx);
 void			*vs_dyn_array_get_elt(
 					t_vs_dyn_array *vs_dyn_array

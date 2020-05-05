@@ -1,0 +1,14 @@
+#include "type_dyn_array.h"
+
+bool	type_dyn_array_set_elt(
+					t_type_dyn_array *tda
+					, size_t idx
+					, type elt)
+{
+	if (!chunk_dyn_array_enlarge(&tda->cda, idx))
+		return (false);
+	*((type*)tda->cda.memory + idx) = elt;
+	if (tda->cda.count <= idx)
+		tda->cda.count = idx + 1;
+	return (true);
+}

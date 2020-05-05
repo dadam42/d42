@@ -304,7 +304,7 @@ list_selected_files
 parse_include
 parse_42header_infos
 
-sedcommand='s#type(([[:space:]]{1,})(\**))#'${type}'\1'${stars}'#g ; s#type([^d])#'${type_tag}'\1#g ; s#TYPE#'${type_tag^^}'#g'
+sedcommand='s#\(type\)#('${type}${stars}')#g ; s#type([^d_][[:space:]]*\**)#'${type}'\1'${stars}'#g ; s#type_#'${type_tag}'_#g ; s#TYPE#'${type_tag^^}'#g'
 for filedx in "${!files[@]}"
 do
 	source_file="$source_directory"/"${files[$filedx]}"

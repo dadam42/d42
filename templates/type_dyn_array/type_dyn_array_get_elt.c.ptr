@@ -1,0 +1,10 @@
+#include "type_dyn_array.h"
+
+type	type_dyn_array_get_elt(
+			t_type_dyn_array *tda
+			, size_t idx)
+{
+	if (idx < tda->cda.count)
+		return (*(((type*)tda->cda.memory) + idx));
+	return (0);
+}

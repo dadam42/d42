@@ -1,0 +1,11 @@
+	if (idx < type_dyn_array->chunk_dyn_array.count)
+	*((void**)cda->memory + idx) = elt;
+	if (cda->count <= idx)
+		cda->count = idx + 1;
+		&da->chunk_dyn_array, &itor->itor);
+		&da->chunk_dyn_array, &itor->itor);
+	return (chunk_dyn_array_iterator_at_end(&itor->itor));
+	return (chunk_dyn_array_iterator_at_start(&itor->itor));
+											&itor->itor));
+	return (chunk_dyn_array_iterator_next(&itor->itor));
+	chunk_dyn_array_iterator_reset_position(&itor->itor);
